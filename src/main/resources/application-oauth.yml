@@ -4,14 +4,14 @@ spring:
       client:
         registration:
           google:
-            client-id: 52484869560-q3eboao3d6bjr8tksm1rlp6tlr5qaf6l.apps.googleusercontent.com
-            client-secret: WYuo6vAv5anUu3n5XMUuHF8Q
+            client-id: 구글 클라이언트 ID
+            client-secret: 구글 암호키
             scope:
               - profile
               - email
           naver:
-            client-id: LYOeWyeVNRLDCCvmXMWd
-            client-secret: c5RmW_IUZc
+            client-id: 네이버 클라이언트 ID
+            client-secret: 네이버 암호키
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
             scope:
@@ -20,15 +20,15 @@ spring:
               - profile_image
             client-name: Naver
           facebook:
-            client-id: 252477422528968
-            client-secret: fec6cb8596494ccfffafdd787ce96ea2
+            client-id: 페이스북 클라이언트 ID
+            client-secret: 페이스북 암호키
             scope:
               - email
               - public_profile
           kakao:
             authorization-grant-type: authorization_code
-            client-id: 03f9392c67ca0ac1ca399f82106fbfed
-            client-secret: 6ZQn8GhOtoZzeDbA6L9A85hH2NyQoz8s
+            client-id: 카카오 클라이언트 ID
+            client-secret: 카카오 암호키
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope:
               - profile
@@ -36,8 +36,8 @@ spring:
             client-authentication-method: POST
             client-name: Kakao
           github:
-            client-id: 94f534f59e3a99d827cb
-            client-secret: 7bd068f5ad32f8502fd55cee9dd84d110f10a29d
+            client-id: 깃허브 클라이언트 ID
+            client-secret: 깃허브 암호키
         provider:
           naver:
             authorization-uri: https://nid.naver.com/oauth2.0/authorize
