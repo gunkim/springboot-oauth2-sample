@@ -1,0 +1,9 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /console
+  thymeleaf:
+    cache: false
+  profiles:
+    include: oauth
