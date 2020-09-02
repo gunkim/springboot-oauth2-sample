@@ -28,9 +28,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        log.info("request :: "+userRequest);
-        log.info("regId :: "+userRequest.getClientRegistration().getRegistrationId());
         OAuth2UserService delegate = new DefaultOAuth2UserService();
+
 
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
@@ -42,8 +41,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         // OAuth2UserService를 통해 가져온 OAuth2User의 attribute를 담을 클래스
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-
-        Member member = saveOrUpdate(attributes);
+        Member member = saveOrUpdate(registrationId, attributes);
 
         //세션에 사용자 정보를 저장하기 위한 dto 클래스
         httpSession.setAttribute("member", new SessionUser(member));
@@ -55,10 +53,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         );
     }
 
-    private Member saveOrUpdate(OAuthAttributes attributes) {
-        Member user = memberRepository.findByEmail(attributes.getEmail())
+    private Member saveOrUpdate(String registrationId, OAuthAttributes attributes) {
+        Member member = memberRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
-        return memberRepository.save(user);
+        return memberRepository.save(member);
     }
 }
