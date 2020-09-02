@@ -3,6 +3,8 @@
 
 # OAuth2 세팅 방법
 > 각각 클라이언트 ID 및 암호키 발급 방법은 [여기](https://gunkim0318.github.io/spring/2020/09/01/Spring-Security-OAuth2/)
+
+## src/main/resources/applicatn-oauth.yml
 ```xml
 spring:
   security:
