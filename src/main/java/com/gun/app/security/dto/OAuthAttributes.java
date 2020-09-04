@@ -13,6 +13,7 @@ import java.util.Map;
 
 /**
  * 스프링 시큐리티 OAuth 인증을 위한 속성 객체
+ * ofNaver, ofKakao 등 of플랫폼명으로 된 메소드들의 리팩토링 여지가 있음.
  */
 @Slf4j
 @Getter
