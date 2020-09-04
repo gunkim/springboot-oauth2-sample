@@ -7,11 +7,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 스프링 시큐리티 OAuth 인증을 위한 속성 객체
+ */
 @Slf4j
 @Getter
 @ToString
@@ -33,22 +35,31 @@ public class OAuthAttributes {
         this.registrationId = registrationId;
     }
 
+    /**
+     * 카카오, 네이버, 페이스북, 구글, 깃허브 등에 따른 속성을 만들어줌
+     * @param registrationId
+     * @param userNameAttributeName
+     * @param attributes
+     * @return
+     */
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         log.info("요청 :: "+registrationId);
         log.info("유저이름 :: "+userNameAttributeName);
         log.info("속성 :: "+attributes);
 
+        Map<String, String> userInfoMap = new HashMap<>();
+
         switch(registrationId){
             case "naver":
                 return ofNaver(registrationId, "id", attributes);
             case "kakao":
-                return ofKakao(registrationId, userNameAttributeName, attributes);
+                return ofKakao(registrationId, "nickname", attributes);
             case "github":
-                return ofGithub(registrationId, userNameAttributeName, attributes);
+                return ofGithub(registrationId, "login", attributes);
             case "facebook":
-                return ofFacebook(registrationId, userNameAttributeName, attributes);
+                return ofFacebook(registrationId, "name", attributes);
             case "google":
-                return ofGoogle(registrationId, userNameAttributeName, attributes);
+                return ofGoogle(registrationId, "name", attributes);
             default:
                 throw new IllegalArgumentException("해당 로그인을 찾을 수 없습니다.");
         }
@@ -56,6 +67,8 @@ public class OAuthAttributes {
     private static OAuthAttributes ofFacebook(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))
+                .email((String) attributes.get("email"))
+                .picture((String) attributes.get("avatar_url"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .registrationId(registrationId)

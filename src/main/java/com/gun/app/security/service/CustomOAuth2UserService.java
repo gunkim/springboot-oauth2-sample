@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
+/**
+ * OAuth2 응답 처리를 위한 서비스
+ */
 @RequiredArgsConstructor
 @Slf4j
 @Service
@@ -26,6 +29,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     private final HttpSession httpSession;
 
+    /**
+     * Provider에게 유저 정보를 반환하고, 세션에 유저 정보를 저장
+     * @param userRequest
+     * @return
+     * @throws OAuth2AuthenticationException
+     */
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService delegate = new DefaultOAuth2UserService();
@@ -41,7 +50,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         // OAuth2UserService를 통해 가져온 OAuth2User의 attribute를 담을 클래스
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-        Member member = saveOrUpdate(registrationId, attributes);
+        Member member = saveOrUpdate(attributes);
 
         //세션에 사용자 정보를 저장하기 위한 dto 클래스
         httpSession.setAttribute("member", new SessionUser(member));
@@ -53,8 +62,17 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         );
     }
 
-    private Member saveOrUpdate(String registrationId, OAuthAttributes attributes) {
-        Member member = memberRepository.findByEmail(attributes.getEmail())
+
+    /**
+     * TODO: 이름에 해당하는 유저가 있으면 업데이트하고, 없을 경우 입력함.
+     * email이 아니라 바뀔 수 있는 이름을 키로 잡은 이유는 카카오 같은 경우 이메일 없이도 가입이 가능하고,
+     * 깃허브 같은 경우는 이메일을 반환하지 않아서, 예제 처리를 위해서 일단 공통으로 모두 무조건 반환하는 이름을 통해
+     * 처리를 했음.
+     * @param attributes
+     * @return
+     */
+    private Member saveOrUpdate(OAuthAttributes attributes) {
+        Member member = memberRepository.findByName(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
         return memberRepository.save(member);

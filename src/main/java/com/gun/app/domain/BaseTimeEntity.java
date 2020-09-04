@@ -9,6 +9,9 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+/**
+ * 자동으로 생성시간, 수정시간 생성을 위한  Entity 클래스
+ */
 @Getter
 @MappedSuperclass //필드들을 컬럼으로 인식되도록 함
 @EntityListeners(AuditingEntityListener.class) // Auditing기능 포함

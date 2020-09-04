@@ -23,7 +23,6 @@ spring:
             client-id: 페이스북 클라이언트 ID
             client-secret: 페이스북 암호키
             scope:
-              - email
               - public_profile
           kakao:
             authorization-grant-type: authorization_code

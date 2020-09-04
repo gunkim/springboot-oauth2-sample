@@ -7,6 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
+/**
+ * 회원 관리를 위한 Entity 클래스
+ */
 @ToString
 @Getter
 @NoArgsConstructor

@@ -5,6 +5,9 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
+/**
+ * 유저 정보를 세션에 등록하기 위한 직렬화 객체
+ */
 @Getter
 public class SessionUser implements Serializable {
     private String name;
