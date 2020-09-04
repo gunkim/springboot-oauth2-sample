@@ -37,21 +37,18 @@ public class OAuthAttributes {
 
     /**
      * 카카오, 네이버, 페이스북, 구글, 깃허브 등에 따른 속성을 만들어줌
-     * @param registrationId
-     * @param userNameAttributeName
-     * @param attributes
-     * @return
+     * @param registrationId 소셜 타입, 즉 네이버, 카카오, 페이스북, 구글, 깃허브
+     * @param userNameAttributeName Principal.getName 하게 되면 나오는 로그인한 유저의 이름으로 등록할 필드명
+     * @param attributes 각 플랫폼에서 반환받은 유저 정보
+     * @return 인증 객체
      */
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         log.info("요청 :: "+registrationId);
         log.info("유저이름 :: "+userNameAttributeName);
         log.info("속성 :: "+attributes);
-
-        Map<String, String> userInfoMap = new HashMap<>();
-
         switch(registrationId){
             case "naver":
-                return ofNaver(registrationId, "id", attributes);
+                return ofNaver(registrationId, "name", attributes);
             case "kakao":
                 return ofKakao(registrationId, "nickname", attributes);
             case "github":
