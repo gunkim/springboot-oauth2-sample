@@ -1,10 +1,8 @@
 package io.github.gunkim.application.spring.security.service;
 
 import io.github.gunkim.application.spring.security.dto.OAuthAttributes;
-import io.github.gunkim.application.spring.security.dto.SessionUser;
 import io.github.gunkim.domain.Member;
 import io.github.gunkim.domain.MemberRepository;
-import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +20,6 @@ import org.springframework.stereotype.Service;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
     private final MemberRepository memberRepository;
     private final OAuth2UserService oAuth2UserService;
-    private final HttpSession httpSession;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -35,8 +32,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName,
             oAuth2User.getAttributes());
         Member member = saveOrUpdate(attributes);
-
-        httpSession.setAttribute("member", new SessionUser(member));
 
         return new DefaultOAuth2User(
             List.of(new SimpleGrantedAuthority(member.roleKey())),
