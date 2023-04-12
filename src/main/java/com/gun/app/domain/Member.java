@@ -1,19 +1,22 @@
 package com.gun.app.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.experimental.Accessors;
 
-import javax.persistence.*;
-
-/**
- * 회원 관리를 위한 Entity 클래스
- */
-@ToString
 @Getter
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Accessors(fluent = true)
 public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +36,7 @@ public class Member extends BaseTimeEntity {
     private Social social;
 
     @Builder
-    public Member(String name, String email, String picture, Role role, Social social){
+    public Member(String name, String email, String picture, Role role, Social social) {
         this.name = name;
         this.email = email;
         this.picture = picture;
@@ -41,14 +44,14 @@ public class Member extends BaseTimeEntity {
         this.social = social;
     }
 
-    public Member update(String name, String picture){
+    public Member update(String name, String picture) {
         this.name = name;
         this.picture = picture;
 
         return this;
     }
 
-    public String getRoleKey(){
-        return this.role.getKey();
+    public String roleKey() {
+        return role.getKey();
     }
 }

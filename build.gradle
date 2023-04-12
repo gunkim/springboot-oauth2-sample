@@ -1,33 +1,12 @@
-buildscript {
-    ext {
-        springBootVer = '2.2.4.RELEASE'
-        springDepenManaVer = '1.0.10.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVer}")
-    }
-}
 plugins {
-    id 'org.springframework.boot' version "${springBootVer}"
-    id 'io.spring.dependency-management' version "${springDepenManaVer}"
-    id 'eclipse'
-    id 'idea'
+    id 'org.springframework.boot' version "3.0.5"
+    id 'io.spring.dependency-management' version "1.0.10.RELEASE"
     id 'java'
 }
 
 group = 'com.gun'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
+version = '0.0.1'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -40,8 +19,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
