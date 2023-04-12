@@ -3,11 +3,13 @@ package com.gun.application.spring.security.dto;
 import com.gun.domain.Member;
 import java.io.Serializable;
 import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
  * 유저 정보를 세션에 등록하기 위한 직렬화 객체
  */
 @Getter
+@Accessors(fluent = true)
 public class SessionUser implements Serializable {
     private String name;
     private String email;

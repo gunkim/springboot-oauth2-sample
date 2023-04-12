@@ -1,18 +1,18 @@
 package com.gun.application.spring.security;
 
-import com.gun.domain.Role;
 import com.gun.application.spring.security.service.CustomOAuth2UserService;
+import com.gun.domain.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
 
-/**
- * 스프링 시큐리티 설정을 위한 클래스
- */
-@RequiredArgsConstructor
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
     private final CustomOAuth2UserService customOAuth2UserService;
 
@@ -23,17 +23,22 @@ public class SecurityConfig {
      * @throws Exception
      */
     @Bean
-    protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .headers().frameOptions().disable().and()
-            //authorizeRequests -> URL별 권한 관리 설정 옵션 시작점
-            //antMatchers에 지정된 url들은 전체 열람 권한 줌
-            .authorizeRequests().requestMatchers("/", "/css/**", "/img/**", "/js/**", "/h2-console/**").permitAll()
-            .requestMatchers("/user").hasRole(Role.USER.name())
-            .anyRequest().authenticated().and() //anyRequest 나머지 url들을 나타냄, authenticated 인증된 경우만 허용
-            .logout().logoutSuccessUrl("/").and() //로그아웃 기능 설정 진입점, 로그아웃 성공 시 /로 이동
+            .authorizeHttpRequests()
+            .requestMatchers(HttpMethod.GET, "/", "/css/**", "/img/**", "/js/**", "/h2-console/**").permitAll()
+            .requestMatchers(HttpMethod.GET, "/user").hasRole(Role.USER.name())
+            .anyRequest().authenticated().and()
+            .logout().logoutSuccessUrl("/").and()
             .oauth2Login().userInfoEndpoint()
-            .userService(customOAuth2UserService); //로그인 기능 설정 진입점, 소셜 로그인 성공 시 후속 조치 진행 Service 인터페이스 구현체 등록
+            .userService(customOAuth2UserService);
+
         return http.build();
+    }
+
+    @Bean
+    public OAuth2UserService oAuth2UserService() {
+        return new DefaultOAuth2UserService();
     }
 }
