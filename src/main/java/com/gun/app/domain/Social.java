@@ -1,10 +1,9 @@
 package com.gun.app.domain;
 
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
 
-/**
- * 소셜 로그인 관리 enum
- */
+@Accessors(fluent = true)
 @RequiredArgsConstructor
 public enum Social {
     KAKAO("카카오"),

@@ -2,11 +2,10 @@ package com.gun.app.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
 
-/**
- * 권한 enum
- */
 @Getter
+@Accessors(fluent = true)
 @RequiredArgsConstructor
 public enum Role {
     USER("ROLE_USER", "일반 사용자"),

@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
 
 @Getter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +52,6 @@ public class Member extends BaseTimeEntity {
     }
 
     public String roleKey() {
-        return role.getKey();
+        return role.key();
     }
 }
