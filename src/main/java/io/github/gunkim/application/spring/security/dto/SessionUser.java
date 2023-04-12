@@ -1,6 +1,6 @@
-package com.gun.application.spring.security.dto;
+package io.github.gunkim.application.spring.security.dto;
 
-import com.gun.domain.Member;
+import io.github.gunkim.domain.Member;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.experimental.Accessors;

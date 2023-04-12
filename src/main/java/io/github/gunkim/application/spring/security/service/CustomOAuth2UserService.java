@@ -1,9 +1,9 @@
-package com.gun.application.spring.security.service;
+package io.github.gunkim.application.spring.security.service;
 
-import com.gun.application.spring.security.dto.OAuthAttributes;
-import com.gun.application.spring.security.dto.SessionUser;
-import com.gun.domain.Member;
-import com.gun.domain.MemberRepository;
+import io.github.gunkim.application.spring.security.dto.OAuthAttributes;
+import io.github.gunkim.application.spring.security.dto.SessionUser;
+import io.github.gunkim.domain.Member;
+import io.github.gunkim.domain.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

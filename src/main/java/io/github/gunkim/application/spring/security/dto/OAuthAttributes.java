@@ -1,8 +1,8 @@
-package com.gun.application.spring.security.dto;
+package io.github.gunkim.application.spring.security.dto;
 
-import com.gun.domain.Member;
-import com.gun.domain.Role;
-import com.gun.domain.Social;
+import io.github.gunkim.domain.Member;
+import io.github.gunkim.domain.Role;
+import io.github.gunkim.domain.Social;
 import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;

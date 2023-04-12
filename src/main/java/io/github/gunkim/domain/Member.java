@@ -1,4 +1,4 @@
-package com.gun.domain;
+package io.github.gunkim.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

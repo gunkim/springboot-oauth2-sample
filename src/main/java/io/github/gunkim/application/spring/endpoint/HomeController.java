@@ -1,4 +1,4 @@
-package com.gun.application.spring.endpoint;
+package io.github.gunkim.application.spring.endpoint;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
