@@ -1,4 +1,4 @@
-package com.gun.app.web;
+package com.gun.application.spring.endpoint;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

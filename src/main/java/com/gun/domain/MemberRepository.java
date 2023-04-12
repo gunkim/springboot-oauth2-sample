@@ -1,4 +1,4 @@
-package com.gun.app.domain;
+package com.gun.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,9 +1,9 @@
-package com.gun.app.security.service;
+package com.gun.application.spring.security.service;
 
-import com.gun.app.domain.Member;
-import com.gun.app.domain.MemberRepository;
-import com.gun.app.security.dto.OAuthAttributes;
-import com.gun.app.security.dto.SessionUser;
+import com.gun.domain.Member;
+import com.gun.domain.MemberRepository;
+import com.gun.application.spring.security.dto.OAuthAttributes;
+import com.gun.application.spring.security.dto.SessionUser;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

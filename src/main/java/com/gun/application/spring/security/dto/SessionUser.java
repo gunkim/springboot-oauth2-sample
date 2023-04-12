@@ -1,6 +1,6 @@
-package com.gun.app.security.dto;
+package com.gun.application.spring.security.dto;
 
-import com.gun.app.domain.Member;
+import com.gun.domain.Member;
 import java.io.Serializable;
 import lombok.Getter;
 

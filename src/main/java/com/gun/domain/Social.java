@@ -1,4 +1,4 @@
-package com.gun.app.domain;
+package com.gun.domain;
 
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;

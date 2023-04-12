@@ -1,7 +1,7 @@
-package com.gun.app.security;
+package com.gun.application.spring.security;
 
-import com.gun.app.domain.Role;
-import com.gun.app.security.service.CustomOAuth2UserService;
+import com.gun.domain.Role;
+import com.gun.application.spring.security.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
