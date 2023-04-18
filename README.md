@@ -1,9 +1,6 @@
 # 스프링 시큐리티와 OAuth2를 구현해보는 예제 프로젝트
 ![image](https://user-images.githubusercontent.com/45007556/91962961-31f83600-ed48-11ea-8d49-032bdd70002d.png)
 
-# OAuth2 세팅 방법
-> 각각 클라이언트 ID 및 암호키 발급 방법은 [여기](https://gunlog.dev/Spring-Security-OAuth2/)
-
 ## src/main/resources/applicatn-oauth.yml
 ```xml
 spring:
