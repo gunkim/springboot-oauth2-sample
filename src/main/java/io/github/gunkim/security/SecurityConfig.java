@@ -1,6 +1,6 @@
-package io.github.gunkim.application.spring.security;
+package io.github.gunkim.security;
 
-import io.github.gunkim.application.spring.security.service.CustomOAuth2UserService;
+import io.github.gunkim.security.service.CustomOAuth2UserService;
 import io.github.gunkim.domain.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

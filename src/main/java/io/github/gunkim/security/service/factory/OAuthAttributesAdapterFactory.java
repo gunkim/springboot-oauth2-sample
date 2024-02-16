@@ -1,6 +1,6 @@
-package io.github.gunkim.application.spring.security.service.factory;
+package io.github.gunkim.security.service.factory;
 
-import io.github.gunkim.application.spring.security.service.factory.adapter.NotSupportedOAuthVendorException;
+import io.github.gunkim.security.service.factory.adapter.NotSupportedOAuthVendorException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

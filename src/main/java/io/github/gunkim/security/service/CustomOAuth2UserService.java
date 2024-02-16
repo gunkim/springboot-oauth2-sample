@@ -1,7 +1,7 @@
-package io.github.gunkim.application.spring.security.service;
+package io.github.gunkim.security.service;
 
-import io.github.gunkim.application.spring.security.service.dto.OAuthAttributes;
-import io.github.gunkim.application.spring.security.service.factory.OAuthAttributesAdapterFactory;
+import io.github.gunkim.security.service.dto.OAuthAttributes;
+import io.github.gunkim.security.service.factory.OAuthAttributesAdapterFactory;
 import io.github.gunkim.domain.Member;
 import io.github.gunkim.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;

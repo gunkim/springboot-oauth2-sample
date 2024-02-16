@@ -1,6 +1,6 @@
-package io.github.gunkim.application.spring.security.service.factory;
+package io.github.gunkim.security.service.factory;
 
-import io.github.gunkim.application.spring.security.service.dto.OAuthAttributes;
+import io.github.gunkim.security.service.dto.OAuthAttributes;
 
 import java.util.Map;
 

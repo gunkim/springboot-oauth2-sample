@@ -1,7 +1,7 @@
-package io.github.gunkim.application.spring.security.service.factory.adapter;
+package io.github.gunkim.security.service.factory.adapter;
 
-import io.github.gunkim.application.spring.security.service.dto.OAuthAttributes;
-import io.github.gunkim.application.spring.security.service.factory.OAuthAttributesAdapter;
+import io.github.gunkim.security.service.dto.OAuthAttributes;
+import io.github.gunkim.security.service.factory.OAuthAttributesAdapter;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

@@ -1,4 +1,4 @@
-package io.github.gunkim.application.spring.security.service.dto;
+package io.github.gunkim.security.service.dto;
 
 import io.github.gunkim.domain.Member;
 import io.github.gunkim.domain.Role;
