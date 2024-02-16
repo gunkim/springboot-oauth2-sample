@@ -7,3 +7,5 @@ spring:
     cache: false
   profiles:
     include: oauth
+  jpa:
+    open-in-view: false
